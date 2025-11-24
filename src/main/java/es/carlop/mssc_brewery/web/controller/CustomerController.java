@@ -3,6 +3,7 @@ package es.carlop.mssc_brewery.web.controller;
 import es.carlop.mssc_brewery.web.model.CustomerDTO;
 import es.carlop.mssc_brewery.web.service.CustomerService;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -39,15 +40,15 @@ public class CustomerController {
     }
 
     @PutMapping("/{customerId}")
-    public ResponseEntity<CustomerDTO> updateCustomer(@PathVariable("customerId") UUID customerId, @RequestBody CustomerDTO customerDTO) {
+    @ResponseStatus(HttpStatus.OK)
+    public void updateCustomer(@PathVariable("customerId") UUID customerId, @RequestBody CustomerDTO customerDTO) {
         customerService.updateCustomer(customerId, customerDTO);
-        return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/{customerId}")
-    public ResponseEntity<Void> deleteCustomerById(@PathVariable("customerId") UUID customerId) {
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteCustomerById(@PathVariable("customerId") UUID customerId) {
         customerService.deleteCustomerById(customerId);
-        return ResponseEntity.noContent().build();
     }
 
 }
