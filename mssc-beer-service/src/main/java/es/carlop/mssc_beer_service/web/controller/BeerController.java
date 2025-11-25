@@ -1,7 +1,6 @@
 package es.carlop.mssc_beer_service.web.controller;
 
 import es.carlop.mssc_beer_service.web.model.BeerDTO;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
